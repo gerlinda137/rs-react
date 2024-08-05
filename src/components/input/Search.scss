@@ -1,0 +1,33 @@
+.search {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+
+  &__input {
+    border-radius: var(--border-radius);
+    border: 1px solid #213547;
+    padding: calc(0.6em - 1px) calc(1.2em - 1px);
+    font-size: 1em;
+    font-family: inherit;
+
+    &::-webkit-input-placeholder {
+      font-size: 0.7em;
+    }
+
+    &::-moz-placeholder {
+      font-size: 0.7em;
+    }
+
+    &:-ms-input-placeholder {
+      font-size: 0.7em;
+    }
+
+    &::-ms-input-placeholder {
+      font-size: 0.7em;
+    }
+
+    &::placeholder {
+      font-size: 0.7em;
+    }
+  }
+}
