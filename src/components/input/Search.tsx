@@ -1,28 +1,29 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
+import { QueryProps } from '../top/Top';
 import './Search.scss';
 
-export default function Search() {
-  const [, setValue] = useState('Random');
+const Search: React.FC<QueryProps> = ({ setQueryValue, setError }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const savedQuery = localStorage.getItem('query');
     if (savedQuery) {
-      setValue(savedQuery);
+      setQueryValue(savedQuery);
       if (inputRef.current) {
         inputRef.current.value = savedQuery;
       }
     }
-  }, []);
+  }, [setQueryValue]);
 
   function handleClick() {
     if (inputRef.current) {
       const value = inputRef.current.value;
       if (value.length < 3) {
-        console.log('Value must contain at least 3 letters');
+        setError ? setError('Value must contain at least 3 letters') : null;
       } else {
-        setValue(value);
+        setQueryValue(value);
         localStorage.setItem('query', value);
+        setError ? setError('') : null;
       }
     }
   }
@@ -42,4 +43,6 @@ export default function Search() {
       </button>
     </section>
   );
-}
+};
+
+export default Search;

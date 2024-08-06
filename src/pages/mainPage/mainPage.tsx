@@ -1,9 +1,14 @@
-import Search from '../../components/input/Search';
+import { useState } from 'react';
+import Top from '../../components/top/Top';
 
-export default function MainPage() {
+const MainPage: React.FC = () => {
+  const [query, setQuery] = useState<string>('Random');
+
   return (
     <section className="main-page">
-      <Search />
+      <Top queryValue={query} setQueryValue={setQuery} />
     </section>
   );
-}
+};
+
+export default MainPage;
