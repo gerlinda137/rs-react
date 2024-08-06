@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Search from '../input/Search';
 import QueryProps from '../interfaces/interfaces';
+import './Top.scss';
 
 const Top: React.FC<QueryProps> = ({ queryValue, setQueryValue }) => {
   const [error, setError] = useState<string>('');

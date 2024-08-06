@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
+import validateInput from '../../utils/inputValidation';
 import QueryProps from '../interfaces/interfaces';
 
 import './Search.scss';
@@ -20,8 +21,11 @@ const Search: React.FC<QueryProps> = ({ setQueryValue, setError }) => {
   };
 
   const handleClick = () => {
-    if (inputValue.length < 3) {
-      setError ? setError('Value must contain at least 3 letters') : null;
+    const validated = validateInput(inputValue);
+    if (!validated) {
+      setError
+        ? setError('Query must contain at least 3 letters and be in english')
+        : null;
     } else {
       setQueryValue(inputValue);
       localStorage.setItem('query', inputValue);
