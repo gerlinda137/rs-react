@@ -1,42 +1,43 @@
-import { useEffect, useRef } from 'react';
+import * as React from 'react';
+import { useEffect, useState } from 'react';
 import { QueryProps } from '../top/Top';
 import './Search.scss';
 
 const Search: React.FC<QueryProps> = ({ setQueryValue, setError }) => {
-  const inputRef = useRef<HTMLInputElement>(null);
+  const [inputValue, setInputValue] = useState<string>('');
 
   useEffect(() => {
     const savedQuery = localStorage.getItem('query');
     if (savedQuery) {
       setQueryValue(savedQuery);
-      if (inputRef.current) {
-        inputRef.current.value = savedQuery;
-      }
+      setInputValue(savedQuery);
     }
   }, [setQueryValue]);
 
-  function handleClick() {
-    if (inputRef.current) {
-      const value = inputRef.current.value;
-      if (value.length < 3) {
-        setError ? setError('Value must contain at least 3 letters') : null;
-      } else {
-        setQueryValue(value);
-        localStorage.setItem('query', value);
-        setError ? setError('') : null;
-      }
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+  };
+
+  const handleClick = () => {
+    if (inputValue.length < 3) {
+      setError ? setError('Value must contain at least 3 letters') : null;
+    } else {
+      setQueryValue(inputValue);
+      localStorage.setItem('query', inputValue);
+      setError ? setError('') : null;
     }
-  }
+  };
 
   return (
     <section className="search">
       <input
-        ref={inputRef}
+        onChange={handleInputChange}
         className="search__input"
         type="search"
         name="search-show"
         id="search-input"
         placeholder="type the name of the movie ot show"
+        value={inputValue}
       />
       <button className="search__btn" onClick={handleClick}>
         Search
