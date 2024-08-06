@@ -1,12 +1,6 @@
 import { useState } from 'react';
 import Search from '../input/Search';
-
-export interface QueryProps {
-  queryValue: string;
-  setQueryValue: React.Dispatch<React.SetStateAction<string>>;
-  error?: string;
-  setError?: React.Dispatch<React.SetStateAction<string>>;
-}
+import QueryProps from '../interfaces/interfaces';
 
 const Top: React.FC<QueryProps> = ({ queryValue, setQueryValue }) => {
   const [error, setError] = useState<string>('');

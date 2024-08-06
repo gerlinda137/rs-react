@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { QueryProps } from '../top/Top';
+import QueryProps from '../interfaces/interfaces';
+
 import './Search.scss';
 
 const Search: React.FC<QueryProps> = ({ setQueryValue, setError }) => {
