@@ -5,16 +5,16 @@ import QueryProps from '../interfaces/interfaces';
 
 import './Search.scss';
 
-const Search: React.FC<QueryProps> = ({ setQueryValue, setError }) => {
+const Search: React.FC<QueryProps> = ({
+  queryValue,
+  setQueryValue,
+  setError,
+}) => {
   const [inputValue, setInputValue] = useState<string>('');
 
   useEffect(() => {
-    const savedQuery = localStorage.getItem('query');
-    if (savedQuery) {
-      setQueryValue(savedQuery);
-      setInputValue(savedQuery);
-    }
-  }, [setQueryValue]);
+    setInputValue(queryValue);
+  }, [queryValue]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
@@ -41,7 +41,7 @@ const Search: React.FC<QueryProps> = ({ setQueryValue, setError }) => {
         type="search"
         name="search-show"
         id="search-input"
-        placeholder="type the name of the movie ot show"
+        placeholder="type the name of the movie or show"
         value={inputValue}
       />
       <button className="search__btn" onClick={handleClick}>
