@@ -1,7 +1,8 @@
 .card {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  max-width: 250px;
+  width: 100%;
   padding: 0;
   gap: 1em;
   display: flex;
@@ -12,7 +13,7 @@
 
   &__image {
     width: 100%;
-    height: 400px;
+    height: 300px;
     -o-object-fit: cover;
     object-fit: cover;
   }
@@ -25,5 +26,19 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+  }
+
+  &__title {
+    font-size: 1em;
+  }
+
+  &__year {
+    margin-bottom: 0.5em;
+  }
+
+  &__type {
+    font-size: 0.8em;
+    margin-bottom: 1em;
+    opacity: 0.7;
   }
 }
