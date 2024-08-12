@@ -15,37 +15,22 @@ const MainPage: React.FC = () => {
       setQuery(savedQuery);
     }
     const fetchCardsData = async () => {
-      if (query.length >= 3) {
-        try {
-          setIsLoading(true);
-          const data = await searchShows(query);
-          setTimeout(() => {
-            setIsLoading(false);
-          }, 500);
-          data ? setCardsData(data) : null;
-        } catch (error) {
-          console.log(error);
-          setTimeout(() => {
-            setIsLoading(false);
-          }, 500);
-        }
-      }
-      if (query === '') {
-        try {
-          setIsLoading(true);
-          const data = await searchShows('Random');
-          setTimeout(() => {
-            setIsLoading(false);
-          }, 500);
-          data ? setCardsData(data) : null;
-        } catch (error) {
-          console.log(error);
-          setTimeout(() => {
-            setIsLoading(false);
-          }, 500);
-        }
+      try {
+        setIsLoading(true);
+        const data = await searchShows(query);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
+        data ? setCardsData(data) : null;
+      } catch (error) {
+        console.log(error);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
       }
     };
+    console.log('I was rendered');
+
     fetchCardsData();
   }, [query]);
 
