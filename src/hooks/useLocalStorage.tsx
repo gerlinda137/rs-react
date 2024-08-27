@@ -1,21 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-type UseLocalStorageReturn = [string, (newQuery: string) => void];
+const useLocalStorage = (key: string, defData: string) => {
+  const [storedQuery, setStoredQuery] = useState<string>(() => {
+    const localData = localStorage.getItem(key);
+    return localData || defData;
+  });
 
-function useLocalStorage(
-  key: string,
-  existingQuery: string,
-): UseLocalStorageReturn {
-  const savedQuery = localStorage.getItem(key);
+  useEffect(() => {
+    localStorage.setItem('query', storedQuery);
+  }, [storedQuery]);
 
-  const [query, setQuery] = useState<string>(savedQuery || existingQuery);
-
-  const setSavedQuery = (newQuery: string) => {
-    setQuery(newQuery);
-    localStorage.setItem(key, newQuery);
-  };
-
-  return [query, setSavedQuery];
-}
-
+  return [storedQuery, setStoredQuery] as const;
+};
 export default useLocalStorage;

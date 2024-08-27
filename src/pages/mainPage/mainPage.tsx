@@ -4,9 +4,10 @@ import Bottom from '../../components/bottom/Bottom';
 import { CardsData } from '../../interfaces/interfaces';
 
 import Top from '../../components/top/Top';
+import useLocalStorage from '../../hooks/useLocalStorage';
 
 const MainPage: React.FC = () => {
-  const [query, setQuery] = useState<string>('');
+  const [query, setQuery] = useLocalStorage('query', 'Movie');
   const [cardsData, setCardsData] = useState<CardsData[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -26,11 +27,6 @@ const MainPage: React.FC = () => {
         }, 500);
       }
     };
-
-    const savedQuery = localStorage.getItem('query');
-    if (savedQuery) {
-      setQuery(savedQuery);
-    }
 
     fetchCardsData();
   }, [query]);

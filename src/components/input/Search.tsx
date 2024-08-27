@@ -28,7 +28,6 @@ const Search: React.FC<QueryProps> = ({
         : null;
     } else {
       setQueryValue(inputValue);
-      localStorage.setItem('query', inputValue);
       setError ? setError('') : null;
     }
   };
