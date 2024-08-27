@@ -1,4 +1,4 @@
-import { CardsData } from '../components/card/Card';
+import { CardsData } from '../interfaces/interfaces';
 
 interface CardsInitialResponse {
   Search: CardsData[];
@@ -6,7 +6,7 @@ interface CardsInitialResponse {
   Response: string;
 }
 
-export const searchShows = async (query: string) => {
+export const searchShows = async (query: string): Promise<CardsData[]> => {
   try {
     const apiKey = import.meta.env.VITE_API_KEY as string;
     const BASE_URL = `https://www.omdbapi.com/?apikey=${apiKey}`;
@@ -16,7 +16,7 @@ export const searchShows = async (query: string) => {
     const response = await fetch(url);
     const data: CardsInitialResponse = await response.json();
     console.log(data);
-    return data.Search as CardsData[];
+    return data.Search;
   } catch (error) {
     console.error('Error searching shows:', error);
     throw error;

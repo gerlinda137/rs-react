@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { searchShows } from '../../api/apiHandler';
 import Bottom from '../../components/bottom/Bottom';
-import { CardsData } from '../../components/card/Card';
+import { CardsData } from '../../interfaces/interfaces';
+
 import Top from '../../components/top/Top';
 
 const MainPage: React.FC = () => {
@@ -10,10 +11,6 @@ const MainPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    const savedQuery = localStorage.getItem('query');
-    if (savedQuery) {
-      setQuery(savedQuery);
-    }
     const fetchCardsData = async () => {
       try {
         setIsLoading(true);
@@ -29,7 +26,11 @@ const MainPage: React.FC = () => {
         }, 500);
       }
     };
-    console.log('I was rendered');
+
+    const savedQuery = localStorage.getItem('query');
+    if (savedQuery) {
+      setQuery(savedQuery);
+    }
 
     fetchCardsData();
   }, [query]);

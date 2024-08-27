@@ -1,19 +1,7 @@
+import { CardsData } from '../../interfaces/interfaces';
 import './Card.scss';
 
-export interface CardProps {
-  Poster: string;
-  Title: string;
-  Year: string;
-  Type: string;
-}
-
-export interface CardsData {
-  Poster: string;
-  Title: string;
-  Year: string;
-  Type: string;
-  imdbID: string;
-}
+export interface CardProps extends Omit<CardsData, 'imdbID'> {}
 
 const Card: React.FC<CardProps> = ({
   Poster,
@@ -24,7 +12,7 @@ const Card: React.FC<CardProps> = ({
   const posterPlaceholder =
     'https://blocks.astratic.com/img/general-img-portrait.png';
   return (
-    <article className={`card`}>
+    <article className="card">
       <button className="card__button">
         <img
           src={Poster === 'N/A' ? posterPlaceholder : Poster}

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Search from '../input/Search';
-import QueryProps from '../interfaces/interfaces';
+import { QueryProps } from '../../interfaces/interfaces';
 import TriggerErrorBtn from '../triggerErrorBtn/TriggerErrorBtn';
 import './Top.scss';
 
