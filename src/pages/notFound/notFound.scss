@@ -1,0 +1,29 @@
+.not-found {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    font-size: 98px;
+    margin-bottom: 1rem;
+  }
+
+  &__link {
+    text-transform: lowercase;
+    color: inherit;
+    display: flex;
+    align-items: center;
+
+    img {
+      margin-right: 0.5em;
+      transform: translateY(5%);
+    }
+
+    &:hover {
+      opacity: 0.7;
+      color: inherit;
+    }
+  }
+}
