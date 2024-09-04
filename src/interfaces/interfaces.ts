@@ -5,13 +5,28 @@ export interface QueryProps {
   setError?: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export interface CardsData {
+export interface ShowsData {
   Poster: string;
   Title: string;
   Year: string;
   Type: string;
   imdbID: string;
 }
+
+export interface ShowsInitialResponseSuccess {
+  Search: ShowsData[];
+  totalResults: string;
+  Response: string;
+}
+
+export interface ShowsInitialResponseError {
+  Response: 'False';
+  Error: string;
+}
+
+export type ShowsInitialResponse =
+  | ShowsInitialResponseSuccess
+  | ShowsInitialResponseError;
 
 export interface ShowData {
   Title: string;

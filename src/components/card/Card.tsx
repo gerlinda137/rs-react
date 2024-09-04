@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import { CardsData } from '../../interfaces/interfaces';
+import { ShowsData } from '../../interfaces/interfaces';
 import './Card.scss';
 
-export interface CardProps extends CardsData {}
+export interface CardProps extends ShowsData {}
 
 const Card: React.FC<CardProps> = ({
   Poster,

@@ -1,4 +1,4 @@
-import { CardsData } from '../../interfaces/interfaces';
+import { ShowsData } from '../../interfaces/interfaces';
 import Loader from '../../loader/Loader';
 
 import CardsList from '../cards-list/CardsList';
@@ -7,7 +7,7 @@ import Pagination from '../pagination/Pagination';
 import './Bottom.scss';
 
 interface BottomProps {
-  cardsData: CardsData[];
+  cardsData: ShowsData[];
   isLoading: boolean;
 }
 

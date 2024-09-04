@@ -1,12 +1,25 @@
-import { CardsData, ShowData } from '../interfaces/interfaces';
+import { ShowData, ShowsInitialResponse } from '../interfaces/interfaces';
 
-interface CardsInitialResponse {
-  Search: CardsData[];
-  totalResults: string;
-  Response: string;
-}
+// export const searchShows = async (query: string): Promise<ShowsData[]> => {
+//   try {
+//     const apiKey = import.meta.env.VITE_API_KEY as string;
+//     const BASE_URL = `https://www.omdbapi.com/?apikey=${apiKey}`;
 
-export const searchShows = async (query: string): Promise<CardsData[]> => {
+//     const url = BASE_URL + '&s=' + query;
+
+//     const response = await fetch(url);
+//     const data: ShowsInitialResponse = await response.json();
+//     console.log(data);
+//     return data.Search;
+//   } catch (error) {
+//     console.error('Error searching shows:', error);
+//     throw error;
+//   }
+// };
+
+export const searchShows = async (
+  query: string,
+): Promise<ShowsInitialResponse> => {
   try {
     const apiKey = import.meta.env.VITE_API_KEY as string;
     const BASE_URL = `https://www.omdbapi.com/?apikey=${apiKey}`;
@@ -14,9 +27,9 @@ export const searchShows = async (query: string): Promise<CardsData[]> => {
     const url = BASE_URL + '&s=' + query;
 
     const response = await fetch(url);
-    const data: CardsInitialResponse = await response.json();
+    const data: ShowsInitialResponse = await response.json();
     console.log(data);
-    return data.Search;
+    return data;
   } catch (error) {
     console.error('Error searching shows:', error);
     throw error;
