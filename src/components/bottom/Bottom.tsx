@@ -1,6 +1,8 @@
+import { CardsData } from '../../interfaces/interfaces';
 import Loader from '../../loader/Loader';
-import { CardsData } from '../card/Card';
+
 import CardsList from '../cards-list/CardsList';
+import Pagination from '../pagination/Pagination';
 
 import './Bottom.scss';
 
@@ -14,6 +16,7 @@ const Bottom: React.FC<BottomProps> = ({ cardsData, isLoading }) => {
     <section className="bottom">
       <CardsList cardsData={cardsData} />
       <Loader isLoading={isLoading} />
+      <Pagination />
     </section>
   );
 };

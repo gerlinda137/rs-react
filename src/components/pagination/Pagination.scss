@@ -1,0 +1,13 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin: 0 auto;
+
+  &__inner {
+    span {
+      font-weight: bold;
+      color: inherit;
+    }
+  }
+}
