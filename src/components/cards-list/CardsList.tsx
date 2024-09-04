@@ -1,4 +1,5 @@
-import Card, { CardsData } from '../card/Card';
+import { CardsData } from '../../interfaces/interfaces';
+import Card from '../card/Card';
 import './CardsList.scss';
 
 interface CardsListProps {
@@ -15,6 +16,7 @@ const CardsList: React.FC<CardsListProps> = ({ cardsData }) => {
           Year={Year}
           Type={Type}
           Poster={Poster}
+          imdbID={imdbID}
         />
       ))}
     </div>

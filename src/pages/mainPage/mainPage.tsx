@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 import { searchShows } from '../../api/apiHandler';
 import Bottom from '../../components/bottom/Bottom';
 import { CardsData } from '../../interfaces/interfaces';
-
 import Top from '../../components/top/Top';
 import useLocalStorage from '../../hooks/useLocalStorage';
+import { Outlet } from 'react-router-dom';
+
+import './mainPage.scss';
 
 const MainPage: React.FC = () => {
   const [query, setQuery] = useLocalStorage('query', 'Movie');
@@ -33,8 +35,11 @@ const MainPage: React.FC = () => {
 
   return (
     <section className="main-page">
-      <Top queryValue={query} setQueryValue={setQuery} />
-      <Bottom cardsData={cardsData} isLoading={isLoading} />
+      <div className="main-page__inner">
+        <Top queryValue={query} setQueryValue={setQuery} />
+        <Bottom cardsData={cardsData} isLoading={isLoading} />
+      </div>
+      <Outlet />
     </section>
   );
 };

@@ -1,19 +1,21 @@
+import { Link } from 'react-router-dom';
 import { CardsData } from '../../interfaces/interfaces';
 import './Card.scss';
 
-export interface CardProps extends Omit<CardsData, 'imdbID'> {}
+export interface CardProps extends CardsData {}
 
 const Card: React.FC<CardProps> = ({
   Poster,
   Title,
   Year,
   Type,
+  imdbID,
 }: CardProps) => {
   const posterPlaceholder =
     'https://blocks.astratic.com/img/general-img-portrait.png';
   return (
     <article className="card">
-      <button className="card__button">
+      <Link className="card__link" to={`detailed/${imdbID}`}>
         <img
           src={Poster === 'N/A' ? posterPlaceholder : Poster}
           alt="Show poster"
@@ -24,7 +26,7 @@ const Card: React.FC<CardProps> = ({
           <span className="card__year">{Year}</span>
           <span className="card__type">{Type}</span>
         </div>
-      </button>
+      </Link>
     </article>
   );
 };

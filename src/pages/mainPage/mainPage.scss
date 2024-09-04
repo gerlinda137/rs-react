@@ -1,0 +1,10 @@
+.main-page {
+  padding: 0 1em;
+  display: flex;
+  width: calc(100vw - 2em);
+  box-sizing: border-box;
+
+  &__inner {
+    width: 100%;
+  }
+}

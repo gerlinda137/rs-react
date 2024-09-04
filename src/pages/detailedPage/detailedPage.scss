@@ -1,0 +1,30 @@
+.detailed-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 2em;
+  padding-right: 0;
+
+  &__close {
+    margin-left: auto;
+  }
+
+  &__inner {
+    display: flex;
+    margin-bottom: 1em;
+    p {
+      margin-top: 0;
+      margin-left: 1em;
+    }
+  }
+
+  &__additional-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+
+    p {
+      margin: 0;
+    }
+  }
+}

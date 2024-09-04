@@ -21,6 +21,10 @@
   margin-bottom: 10px;
 }
 
+.detailed-loader {
+  position: static;
+}
+
 @-webkit-keyframes spin {
   0% {
     transform: rotate(0deg);

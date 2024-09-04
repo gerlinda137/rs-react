@@ -4,6 +4,7 @@ import validateInput from '../../utils/inputValidation';
 import { QueryProps } from '../../interfaces/interfaces';
 
 import './Search.scss';
+import { useNavigate } from 'react-router-dom';
 
 const Search: React.FC<QueryProps> = ({
   queryValue,
@@ -11,6 +12,7 @@ const Search: React.FC<QueryProps> = ({
   setError,
 }) => {
   const [inputValue, setInputValue] = useState<string>(queryValue);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setInputValue(queryValue);
@@ -29,6 +31,7 @@ const Search: React.FC<QueryProps> = ({
     } else {
       setQueryValue(inputValue);
       setError ? setError('') : null;
+      navigate('/');
     }
   };
 

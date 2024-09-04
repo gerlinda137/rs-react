@@ -10,6 +10,8 @@
   align-items: center;
   padding: 1em;
   flex: 1 0 auto;
+  border: 1px solid gray;
+  border-radius: 5px;
 
   &__image {
     width: 100%;
@@ -18,8 +20,14 @@
     object-fit: cover;
   }
 
-  &__button {
+  &__link {
     height: 100%;
+    color: inherit;
+
+    &:hover {
+      opacity: 0.7;
+      color: inherit;
+    }
   }
 
   &__content {
